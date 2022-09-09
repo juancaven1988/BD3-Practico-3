@@ -1,0 +1,21 @@
+package ude.bdIII.practico;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class QueryExecuter {
+
+	public static void Create(Connection con) throws SQLException
+	{
+		String create = Querys.crearDatabase();
+		
+		Statement stm = con.createStatement();		
+		
+		stm.executeUpdate(create);
+		
+		stm.close();
+		
+	}
+	
+}

@@ -1,0 +1,105 @@
+package ude.bdIII.vistas;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
+import javax.swing.UIManager;
+
+public class VentanaBedelia {
+
+	private JFrame frmBedelia;
+	private JTextField txtfCedula;
+	private JTextField txtfCalificacion;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaBedelia window = new VentanaBedelia();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public VentanaBedelia() {
+		initialize();
+		frmBedelia.setVisible(true);
+	
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmBedelia = new JFrame();
+		frmBedelia.setTitle("Bedelia");
+		frmBedelia.getContentPane().setBackground(UIManager.getColor("textHighlight"));
+		frmBedelia.setForeground(UIManager.getColor("scrollbar"));
+		frmBedelia.getContentPane().setForeground(UIManager.getColor("textHighlight"));
+		frmBedelia.setBounds(100, 100, 588, 276);
+		frmBedelia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBedelia.getContentPane().setLayout(null);
+		
+		JLabel lblSeleccion = new JLabel("Por favor seleccione examen: ");
+		lblSeleccion.setFont(new Font("Monospaced", Font.BOLD, 14));
+		lblSeleccion.setBounds(27, 21, 351, 36);
+		frmBedelia.getContentPane().add(lblSeleccion);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		scrollPane.setBounds(22, 68, 337, 146);
+		frmBedelia.getContentPane().add(scrollPane);
+		
+		JList listExamenes = new JList();
+		listExamenes.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		listExamenes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listExamenes);
+		
+		txtfCedula = new JTextField();
+		txtfCedula.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		txtfCedula.setBounds(476, 67, 86, 20);
+		frmBedelia.getContentPane().add(txtfCedula);
+		txtfCedula.setColumns(10);
+		
+		txtfCalificacion = new JTextField();
+		txtfCalificacion.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		txtfCalificacion.setBounds(476, 113, 86, 20);
+		frmBedelia.getContentPane().add(txtfCalificacion);
+		txtfCalificacion.setColumns(10);
+		
+		JLabel lblCedula = new JLabel("Cedula");
+		lblCedula.setFont(new Font("Monospaced", Font.BOLD, 13));
+		lblCedula.setBounds(414, 68, 57, 17);
+		frmBedelia.getContentPane().add(lblCedula);
+		
+		JLabel lblCalificacion = new JLabel("Calificacion");
+		lblCalificacion.setFont(new Font("Monospaced", Font.BOLD, 13));
+		lblCalificacion.setBounds(369, 116, 102, 17);
+		frmBedelia.getContentPane().add(lblCalificacion);
+		
+		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.setBackground(Color.ORANGE);
+		btnIngresar.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnIngresar.setBounds(416, 174, 89, 23);
+		frmBedelia.getContentPane().add(btnIngresar);
+	}
+}

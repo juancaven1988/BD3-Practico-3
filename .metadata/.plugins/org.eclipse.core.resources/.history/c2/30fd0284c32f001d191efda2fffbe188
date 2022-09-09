@@ -1,0 +1,45 @@
+package ude.bdIII.practico;
+
+public class Querys {
+
+	
+	public static String crearDatabase() {
+		
+		return "Create if not exists database bedelia";
+	}
+	
+	public static String crearTabla(String tableName, String[] columns) {
+		
+		
+		String query = " Create if not exists table " + tableName + "(";
+		for(String s : columns)
+		{
+			query += s;
+		}
+		
+		query += ")";
+		
+		
+		return query;}
+	
+	public static String crearTabla(String tableName, String[] columns, String[] restrictions) {
+		
+		
+		String query = " Create if not exists table " + tableName + "(";
+		for(String s : columns)
+		{
+			query += s;
+		}
+		
+		query += ")";
+		
+		for(String s : restrictions)
+		{
+			query += s;
+		}
+		
+		
+		return query;}
+	
+	
+}

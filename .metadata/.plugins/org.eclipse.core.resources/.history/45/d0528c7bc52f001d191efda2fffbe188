@@ -1,0 +1,39 @@
+package ude.bdIII.practico;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class QueryExecuter {
+
+	public static void Create(Connection con) throws SQLException
+	{
+		String create = Querys.crearDatabase();
+		
+		Statement stm = con.createStatement();		
+		
+		stm.executeUpdate(create);
+		
+		stm.close();
+		
+	}
+	
+	public static void CreateTableExamenes(Connection con) throws SQLException 
+	{
+		
+		String tablenName = "Examenes";
+		String columns = "codigo varchar(45) primary key, materia varchar (45), periodo varchar(45)";
+		
+		String query = Querys.crearTabla(tablenName, columns);
+		
+		Statement stm = con.createStatement();
+		
+		stm.executeUpdate(query);
+		
+		stm.close();
+		
+	}
+	
+	
+	
+}

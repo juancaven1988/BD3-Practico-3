@@ -1,0 +1,84 @@
+package ude.bdIII.practico;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class QueryExecuter {
+
+	public static void Create(Connection con) throws SQLException
+	{
+		String create = Querys.crearDatabase();
+		
+		Statement stm = con.createStatement();		
+		
+		stm.executeUpdate(create);
+		
+		stm.close();
+		
+	}
+	
+	public static void MoveToDB(Connection con) throws SQLException
+	{
+		String use = "Use bedelia";
+		
+		Statement stm = con.createStatement();		
+		
+		stm.executeUpdate(use);
+		
+		stm.close();
+		
+		
+	}
+	
+	public static boolean CreateTables(Connection con) throws SQLException 
+	{
+		boolean exito = false;
+		
+		String tableName = "Examenes";
+		String columns = "codigo varchar(45) primary key, materia varchar (45), periodo varchar(45)";
+		
+		String query = Querys.crearTabla(tableName, columns);
+		
+		Statement stm = con.createStatement();
+		
+		stm.executeUpdate(query);
+		
+		
+		
+		tableName = "Resultados";
+		columns = "cedula INT, codigo VARCHAR(45), calificacion INT,";
+		String restrictions = "Primary key (cedula, codigo), FOREIGN KEY (codigo) REFERENCES Examenes(codigo)";
+		
+		query = Querys.crearTabla(tableName, columns, restrictions);
+		
+		int result = stm.executeUpdate(query);
+		
+		System.out.println(result);
+		
+		
+		stm.close();
+		
+		
+		if(result != 0)
+		{
+			exito = true;
+		}
+		
+		return exito;
+		
+	}
+	
+	public static void InsertDefaultData(Connection con) throws SQLException
+	{
+		String query = Querys.baseData();
+		
+		Statement stm = con.createStatement();
+		
+		stm.executeUpdate(query);
+		
+	}
+	
+	
+	
+}

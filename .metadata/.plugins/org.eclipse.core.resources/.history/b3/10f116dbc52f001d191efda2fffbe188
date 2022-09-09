@@ -1,0 +1,61 @@
+package ude.bdIII.practico;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class QueryExecuter {
+
+	public static void Create(Connection con) throws SQLException
+	{
+		String create = Querys.crearDatabase();
+		
+		Statement stm = con.createStatement();		
+		
+		stm.executeUpdate(create);
+		
+		stm.close();
+		
+	}
+	
+	public static void CreateTables(Connection con) throws SQLException 
+	{
+		
+		String tableName = "Examenes";
+		String columns = "codigo varchar(45) primary key, materia varchar (45), periodo varchar(45)";
+		
+		String query = Querys.crearTabla(tableName, columns);
+		
+		Statement stm = con.createStatement();
+		
+		stm.executeUpdate(query);
+		
+		
+		
+		tableName = "Resultados";
+		columns = "cedula INT, codigo VARCHAR(45), calificacion INT,";
+		String restrictions = "Primary key (cedula, codigo), FOREIGN KEY (codigo) REFERENCES Examenes(codigo)";
+		
+		query = Querys.crearTabla(tableName, columns, restrictions);
+		
+		stm.executeUpdate(query);
+		
+		stm.close();
+		
+		
+		
+	}
+	
+	public static void InsertDefaultData(Connection con) throws SQLException
+	{
+		String query = Querys.baseData();
+		
+		Statement stm = con.createStatement();
+		
+		stm.executeUpdate(query);
+		
+	}
+	
+	
+	
+}

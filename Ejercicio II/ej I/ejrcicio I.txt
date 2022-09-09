@@ -1,0 +1,34 @@
+
+Para cada una de las siguientes afirmaciones sobre aplicaciones en arquitecturas de 1 capa,
+indique si es correcta o incorrecta de acuerdo a los conceptos vistos en el teórico. 
+Fundamente todas sus respuestas.
+
+a) Si se decide cambiar el mecanismo de persistencia utilizado (por ejemplo, de archivos de texto
+a bases de datos), no es necesario recompilar código fuente en la interfaz de usuario.
+
+falso - ya que hay que modificar el codigo fuente por lo que hay que recomplilarlo
+
+b) La definición de una clase que encapsula el acceso a la base de datos asegura que la
+arquitectura de la aplicación deja de estar en 1 capa y pasa a estar en 2 capas.
+
+falso - porque aun asi quien hace las llamadas para acceder a la bd sigue siendo la capa grafica
+
+c) Si la aplicación es standalone y cada requerimiento se resuelve en una sola consulta,
+entonces es posible migrarla a cliente-servidor sin necesitar modificar código fuente.
+
+falso - depende de si la url de la bd se obtiene de un archivo de propiedades o esta en el codigo fuente
+
+d) El manejo de transacciones sobre la base de datos se reserva exclusivamente para
+aplicaciones en arquitecturas de 2 y 3 capas.
+
+falso - depende de si la arquitectura fisica es standalone o cliente servidor y ademas del tipo de consultas
+
+e) Las aplicaciones que priorizan el comportamiento a nivel de la aplicación permiten un mejor
+aprovechamiento de los recursos del DBMS en términos de optimización de las consultas.
+
+falso - es a la inversa
+
+f) Una reducción en la cantidad de consultas que ejecuta la aplicación implica un aumento en la
+cantidad de causas que pueden provocar excepciones de SQL.
+
+falso - si hay menos consultas hay menos posibilidada de excepciones.

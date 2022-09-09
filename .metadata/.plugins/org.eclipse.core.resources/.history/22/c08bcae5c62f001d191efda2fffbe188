@@ -1,0 +1,40 @@
+package ude.bdIII.practico;
+
+public class Querys {
+
+	
+	public static String crearDatabase() {
+		
+		return "Create database if not exists  bedelia";
+	}
+	
+	public static String crearTabla(String tableName, String columns) {
+		
+		
+		String query = " Create if not exists table " + tableName + "(" + columns +  ")";
+		
+		
+		return query;}
+	
+	public static String crearTabla(String tableName, String columns, String restrictions) {
+		
+		
+		String query = " Create if not exists table " 
+							+ tableName + "(" + columns  + restrictions + ")";
+	
+			
+		return query;}
+	
+	
+	public static String baseData() {
+		
+		String query = "Insert into table Examenes values(MD2019Dic, Matemática discreta, Diciembre 2019),"
+						+ "(P12019Dic, Programación 1, Diciembre 2019),"
+						+ "(BD22019Dic, Bases de datos 2, Diciembre 2019),"
+						+ "(MD2020Feb, Matemática discreta, Febrero 2020),"
+						+ "(P22020Feb, Programación 2, Febrero 2020),";
+		
+		return query;
+	}
+	
+}

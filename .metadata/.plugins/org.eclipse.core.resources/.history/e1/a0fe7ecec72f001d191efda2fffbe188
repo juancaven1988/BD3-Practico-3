@@ -1,0 +1,61 @@
+package ude.bdIII.practico;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		
+		Properties prop = new Properties();
+		String properties = "config/data.properties";
+		
+		try {
+			
+			prop.load(new FileInputStream(properties));
+			
+		} catch (IOException e) {
+			
+			System.out.println(e.getMessage());
+			
+		}
+		
+		String url = prop.getProperty("url");
+		String user = prop.getProperty("user");
+		String sena = prop.getProperty("sena");
+		
+		try {
+			
+			Connection con = DriverManager.getConnection(url, user, sena);
+			
+			//CREA LA BASE DE DATOS SI NO EXISTE
+			QueryExecuter.Create(con);
+			QueryExecuter.MoveToDB(con);
+			
+			
+			
+			//CREAR TABLA EXAMENES
+			boolean insertData = QueryExecuter.CreateTables(con);
+			
+			if(insertData)
+			{
+				QueryExecuter.InsertDefaultData(con);
+			}
+			
+			con.close();
+			
+		} catch (SQLException e) {
+			
+				System.out.println(e.getMessage());
+				System.out.println(e.getCause());
+		}
+		
+
+	}
+
+}
