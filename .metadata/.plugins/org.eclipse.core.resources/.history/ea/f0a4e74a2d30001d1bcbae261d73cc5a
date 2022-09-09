@@ -74,10 +74,9 @@ public class VentanaBedelia {
 		frmBedelia = new JFrame();
 		frmBedelia.addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent e) {
+			public void windowClosed(WindowEvent e) {
 				
 				try {
-					System.out.print("Cerrada la ventana");
 					connection.close();
 					JOptionPane.showMessageDialog(null, "conexion cerrada", "Bedelia", JOptionPane.INFORMATION_MESSAGE);
 					System.exit(0);

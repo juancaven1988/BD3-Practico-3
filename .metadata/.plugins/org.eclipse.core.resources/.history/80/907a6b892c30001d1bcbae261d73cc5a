@@ -8,8 +8,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import javax.swing.JOptionPane;
-
 import ude.bdIII.vistas.VentanaBedelia;
 
 public class Main {
@@ -22,7 +20,7 @@ public class Main {
 			
 		}catch (Exception e)
 		{
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Server", JOptionPane.ERROR_MESSAGE);
+			System.out.println(e.getMessage());
 		}
 	
 		

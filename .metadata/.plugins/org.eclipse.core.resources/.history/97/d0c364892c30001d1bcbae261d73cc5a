@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTextField;
@@ -45,7 +44,22 @@ public class VentanaBedelia {
 	private Connection connection;
 	private List<Examen> examenes;
 	
-
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					
+					VentanaBedelia window = new VentanaBedelia();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -54,7 +68,8 @@ public class VentanaBedelia {
 		try {
 			initialize();
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Bedelia", JOptionPane.ERROR_MESSAGE);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		frmBedelia.setVisible(true);
 	
@@ -74,16 +89,13 @@ public class VentanaBedelia {
 		frmBedelia = new JFrame();
 		frmBedelia.addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent e) {
+			public void windowClosed(WindowEvent e) {
 				
 				try {
-					System.out.print("Cerrada la ventana");
 					connection.close();
-					JOptionPane.showMessageDialog(null, "conexion cerrada", "Bedelia", JOptionPane.INFORMATION_MESSAGE);
-					System.exit(0);
 				} catch (SQLException e1) {
 					
-					JOptionPane.showMessageDialog(null, e1.getMessage(), "Bedelia", JOptionPane.ERROR_MESSAGE);
+					System.out.println(e1.getMessage());
 				}
 				
 			}
@@ -93,7 +105,7 @@ public class VentanaBedelia {
 		frmBedelia.setForeground(UIManager.getColor("scrollbar"));
 		frmBedelia.getContentPane().setForeground(UIManager.getColor("textHighlight"));
 		frmBedelia.setBounds(100, 100, 588, 276);
-		//frmBedelia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBedelia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBedelia.getContentPane().setLayout(null);
 		
 		JLabel lblSeleccion = new JLabel("Por favor seleccione examen: ");
@@ -179,7 +191,7 @@ public class VentanaBedelia {
 					QueryExecuter.ingresarResultado(connection, resultado);
 				} catch (SQLException e1) {
 					
-					JOptionPane.showMessageDialog(null, e1.getMessage(), "Bedelia", JOptionPane.ERROR_MESSAGE);
+					System.out.println(e1.getMessage());
 				}
 			}
 		});
@@ -207,7 +219,7 @@ public class VentanaBedelia {
 			
 		} catch (IOException e) {
 			
-			JOptionPane.showMessageDialog(null, "Error hallando la ruta", "Bedelia", JOptionPane.ERROR_MESSAGE);
+			System.out.println(e.getMessage());
 			
 		}
 		
@@ -224,7 +236,8 @@ public class VentanaBedelia {
 						
 		} catch (Exception e) {
 			
-			JOptionPane.showMessageDialog(null, "Error de conexion", "Bedelia", JOptionPane.ERROR_MESSAGE);
+				System.out.println(e.getMessage());
+				System.out.println(e.getCause());
 		}
 	}
 	

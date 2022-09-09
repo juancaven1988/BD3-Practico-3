@@ -74,13 +74,11 @@ public class VentanaBedelia {
 		frmBedelia = new JFrame();
 		frmBedelia.addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent e) {
+			public void windowClosed(WindowEvent e) {
 				
 				try {
-					System.out.print("Cerrada la ventana");
 					connection.close();
 					JOptionPane.showMessageDialog(null, "conexion cerrada", "Bedelia", JOptionPane.INFORMATION_MESSAGE);
-					System.exit(0);
 				} catch (SQLException e1) {
 					
 					JOptionPane.showMessageDialog(null, e1.getMessage(), "Bedelia", JOptionPane.ERROR_MESSAGE);
@@ -93,7 +91,7 @@ public class VentanaBedelia {
 		frmBedelia.setForeground(UIManager.getColor("scrollbar"));
 		frmBedelia.getContentPane().setForeground(UIManager.getColor("textHighlight"));
 		frmBedelia.setBounds(100, 100, 588, 276);
-		//frmBedelia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBedelia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBedelia.getContentPane().setLayout(null);
 		
 		JLabel lblSeleccion = new JLabel("Por favor seleccione examen: ");
