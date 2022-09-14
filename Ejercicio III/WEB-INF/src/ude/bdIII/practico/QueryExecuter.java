@@ -1,6 +1,7 @@
 package ude.bdIII.practico;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,7 +59,39 @@ public class QueryExecuter {
 		pstm.close();		
 		
 	}
+	
+	
+	/* devuelve un listado de todos los exámenes registrados en la BD */
+	/* correspondientes al número de cédula ingresado. En caso de no */
+	/* haber ninguno, devuelve el listado vacío */
+	public static List <Resultado> listarResultados (Connection con, int cedula) throws SQLException{
+		
+		String query = Querys.listarResultados();
+		ArrayList<Resultado> resultados = new ArrayList<Resultado>();
+		Resultado resultado = new Resultado(); 
+		
+		PreparedStatement pstm = con.prepareStatement(query);
+		pstm.setInt(1, cedula);
+		
+		ResultSet rs = pstm.executeQuery();
+		
+		while(rs.next()) {
+			
+			resultado = new Resultado(cedula, rs.getString("codigo"), rs.getInt("calificacion"));
+			
+			resultados.add(resultado);
+					
+		}
+		
+		return resultados;
+		
+	}
+		
+		
+		
+	}
+	
 		
 	
 	
-}
+

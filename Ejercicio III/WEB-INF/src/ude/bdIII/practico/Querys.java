@@ -15,4 +15,12 @@ public class Querys {
 		return "Insert into resultados values(?,?,?)";
 	}
 	
+	/* crea el texto de la consulta que obtiene todos los resultados */
+	/* de los exámenes rendidos por un estudiante, dada su cédula */
+	public static String listarResultados () {
+		
+		return "Select * from resultados where cedula = (?)";
+	}
+	
+	
 }

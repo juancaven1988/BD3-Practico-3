@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/</rootDir>
+    <workDir>/work</workDir>
+    <exportSource>true</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>false</redirectLogger>
+    <updateXml>false</updateXml>
+    <warLocation>H:\Licenciatura Informatica\Tercer año\Base de Datos III\workspace\Practico III\Ejercicio III\war\consultaNotas.war</warLocation>
+    <extraInfo></extraInfo>
+    <mavenClasspath>false</mavenClasspath>
+    <webPath>/consultaNotas</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/Ejercicio III/WEB-INF/classes</webClassPathEntry>
+        <webClassPathEntry>/Ejercicio III/WEB-INF/lib/jstl.jar</webClassPathEntry>
+        <webClassPathEntry>H:/Licenciatura Informatica/Tercer año/Base de Datos III/mysql-connector-java-8.0.29.jar</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>

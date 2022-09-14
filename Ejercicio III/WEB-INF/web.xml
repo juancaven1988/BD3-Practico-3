@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+	<description>Consulta de nots de alumnos</description>
+	<display-name>Consulta de notas</display-name>
+	<servlet>
+		<servlet-name>Resultados</servlet-name>
+		<servlet-class>ude.bdIII.vistas.ServletResultados</servlet-class>
+		<init-param>
+			<param-name>usuario</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>url</param-name>
+			<param-value>jdbc:mysql://localhost:3306/bedelia</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>sena</param-name>
+			<param-value>a159357s</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>  <!-- /home es la url de acceso al servlet Inicial -->
+		<servlet-name>Resultados</servlet-name>
+		<url-pattern>/Index</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>  
+		<welcome-file>Index.jsp</welcome-file>
+	</welcome-file-list>
+
+	
+	
+</web-app>
+

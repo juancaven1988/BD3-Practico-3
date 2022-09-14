@@ -1,11 +1,11 @@
 package ude.bdIII.vistas;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,28 +14,21 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
 import ude.bdIII.practico.Examen;
 import ude.bdIII.practico.QueryExecuter;
 import ude.bdIII.practico.Resultado;
-
-import java.awt.Color;
-import javax.swing.UIManager;
-import javax.swing.AbstractListModel;
-import javax.swing.DefaultListModel;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class VentanaBedelia {
 
@@ -69,6 +62,7 @@ public class VentanaBedelia {
 		
 		InciarConexion();
 		ObtenerExamenes();
+		connection.close();
 		
 		
 		frmBedelia = new JFrame();
@@ -95,6 +89,7 @@ public class VentanaBedelia {
 		frmBedelia.setBounds(100, 100, 588, 276);
 		//frmBedelia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBedelia.getContentPane().setLayout(null);
+		frmBedelia.setLocationRelativeTo(null);
 		
 		JLabel lblSeleccion = new JLabel("Por favor seleccione examen: ");
 		lblSeleccion.setFont(new Font("Monospaced", Font.BOLD, 14));
@@ -176,7 +171,13 @@ public class VentanaBedelia {
 				Resultado resultado = new Resultado(cedula,codigo,calificacion);
 				
 				try {
+					InciarConexion();
 					QueryExecuter.ingresarResultado(connection, resultado);
+					connection.close();
+					JOptionPane.showMessageDialog(null, "Datos Prosesados", "Bedelia", JOptionPane.INFORMATION_MESSAGE);
+					txtfCalificacion.setText("");
+					txtfCedula.setText("");
+					
 				} catch (SQLException e1) {
 					
 					JOptionPane.showMessageDialog(null, e1.getMessage(), "Bedelia", JOptionPane.ERROR_MESSAGE);
